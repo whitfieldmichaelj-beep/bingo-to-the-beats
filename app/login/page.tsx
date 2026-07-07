@@ -60,7 +60,14 @@ export default function LoginPage() {
             type="password"
             required
           />
-
+<div className="mt-4 text-center">
+  <a
+    href="/forgot-password"
+    className="text-sm text-fuchsia-400 hover:text-fuchsia-300 underline"
+  >
+    Forgot your password?
+  </a>
+</div>
           <button className="w-full rounded-xl bg-orange-500 px-5 py-3 font-black text-black">
             Sign In
           </button>
