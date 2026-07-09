@@ -5,8 +5,8 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
 import { db } from "@/lib/firebase";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/ui/Navbar";
+import Footer from "../components/ui/Footer";
 
 export default function JoinPage() {
   const router = useRouter();

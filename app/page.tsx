@@ -1,7 +1,7 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import FeatureCard from "./components/FeatureCard";
+import Navbar from "./components/ui/Navbar";
+import Footer from "./components/ui/Footer";
+import Hero from "./components/ui/Hero";
+import FeatureCard from "./components/ui/FeatureCard";
 
 export default function Home() {
   return (

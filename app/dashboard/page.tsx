@@ -12,8 +12,8 @@ import {
   subscribeToBingoClaims,
 } from "@/lib/gameService";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/ui/Navbar";
+import Footer from "../components/ui/Footer";
 import DashboardStats from "../../components/dashboard/DashboardStats";
 import GameCard from "../../components/dashboard/GameCard";
 

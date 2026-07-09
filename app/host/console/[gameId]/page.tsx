@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { doc, onSnapshot } from "firebase/firestore";
+import { collection, doc, onSnapshot } from "firebase/firestore";
 import { useParams } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { playSong, endGame as endGameEngine } from "@/lib/gameEngine";
@@ -36,6 +36,8 @@ export default function LiveHostConsolePage() {
 
   const [game, setGame] = useState<Game | null>(null);
   const [loading, setLoading] = useState(true);
+  const [playerCount, setPlayerCount] = useState(0);
+const [claimCount, setClaimCount] = useState(0);
 
   useEffect(() => {
     if (!gameId) return;
@@ -50,6 +52,29 @@ export default function LiveHostConsolePage() {
 
     return () => unsubscribe();
   }, [gameId]);
+  
+  useEffect(() => {
+  if (!gameId) return;
+
+  const unsubscribePlayers = onSnapshot(
+    collection(db, "games", gameId, "players"),
+    (snapshot) => {
+      setPlayerCount(snapshot.size);
+    }
+  );
+
+  const unsubscribeClaims = onSnapshot(
+    collection(db, "games", gameId, "bingoClaims"),
+    (snapshot) => {
+      setClaimCount(snapshot.size);
+    }
+  );
+
+  return () => {
+    unsubscribePlayers();
+    unsubscribeClaims();
+  };
+}, [gameId]);
 
   async function playNextSong() {
     if (!game || !game.id) return;
@@ -127,6 +152,22 @@ export default function LiveHostConsolePage() {
               ▶ Play Next Song
             </button>
           </div>
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <div className="rounded-2xl border border-zinc-800 bg-black p-6 text-center">
+    <p className="text-sm font-bold uppercase tracking-widest text-gray-400">
+      Players Joined
+    </p>
+    <p className="mt-3 text-5xl font-black text-green-400">{playerCount}</p>
+  </div>
+
+  <div className="rounded-2xl border border-zinc-800 bg-black p-6 text-center">
+    <p className="text-sm font-bold uppercase tracking-widest text-gray-400">
+      Bingo Claims
+    </p>
+    <p className="mt-3 text-5xl font-black text-yellow-300">{claimCount}</p>
+  </div>
+</div>
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <div className="rounded-2xl border border-zinc-800 bg-black p-6">

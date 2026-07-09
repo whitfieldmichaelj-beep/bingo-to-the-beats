@@ -5,8 +5,8 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
 import { auth, db } from "@/lib/firebase";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Navbar from "../components/ui/Navbar";
+import Footer from "../components/ui/Footer";
 
 function generateGameCode() {
   return `BTTB-${Math.floor(1000 + Math.random() * 9000)}`;

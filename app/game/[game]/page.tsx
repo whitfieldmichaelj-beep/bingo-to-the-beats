@@ -11,12 +11,11 @@ import { useParams } from "next/navigation";
 
 import { db } from "@/lib/firebase";
 import { checkBingo } from "@/lib/bingoEngine";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-
+import Navbar from "../../components/ui/Navbar";
+import Footer from "../../components/ui/Footer";
 type Game = {
   gameName: string;
-  venue: string;
+  venue: string;  
   gameCode: string;
   status: string;
   currentSong?: string;
