@@ -19,6 +19,9 @@ type Game = {
   venue: string;
   gameCode: string;
   status: string;
+  currentSong?: string;
+  calledSongs?: string[];
+  songIndex?: number;
 };
 
 const bingoSongs = [
@@ -192,6 +195,15 @@ export default function GameLobbyPage() {
               <h2 className="text-4xl font-black text-green-400">
                 🎵 Game Started!
               </h2>
+              <div className="mt-6 rounded-2xl border border-fuchsia-700 bg-zinc-950 p-5">
+  <p className="text-sm font-bold uppercase tracking-widest text-gray-400">
+    Now Playing
+  </p>
+
+  <h3 className="mt-2 text-3xl font-black text-fuchsia-400">
+    {game.currentSong || "Waiting for host..."}
+  </h3>
+</div>
 
               <p className="mt-4 text-xl text-gray-400">
                 Mark five in a row to call Bingo.

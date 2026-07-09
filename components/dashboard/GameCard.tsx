@@ -59,6 +59,13 @@ export default function GameCard({
         onUpdateClaim={onUpdateClaim}
       />
 
+      <a
+        href={`/host/console/${game.id}`}
+        className="mt-5 mr-3 inline-block rounded-xl bg-orange-500 px-5 py-3 font-black text-black"
+      >
+        🎛️ Open Host Console
+      </a>
+
       <button
         onClick={() => onStartGame(game.id)}
         disabled={players.length === 0 || game.status === "live"}
